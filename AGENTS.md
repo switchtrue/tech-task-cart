@@ -42,8 +42,9 @@ Built as a take-home task; the design/plan artifacts are committed under
 - OpenAPI: `pnpm --filter @cart/contracts generate:openapi`
 
 ## Status
-Data model implemented: User/Product/Cart/CartItem schema, committed initial
-migration, idempotent seed (demo user `user-1` + 8 products), category DB↔wire
-boundary map, and DB-backed tests for the `@@unique(cartId, productId)`
-constraint. Route handlers still return `501` stubs — the four cart APIs are the
-next phase. See `docs/superpowers/plans/`.
+Backend cart APIs implemented: `GET /products`, `GET /cart`,
+`POST /cart/items` (increment-on-duplicate), `DELETE /cart/items/:productId`,
+through a thin-route → cart-service → repository layering with integer-cents
+totals, structured errors (`ApiException` + `onError`), and an `x-user-id`
+middleware on cart routes. Unit + integration tested (23 tests). The frontend
+(product list + cart view) is the next phase. See `docs/superpowers/plans/`.
