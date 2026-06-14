@@ -1,0 +1,27 @@
+{
+  "name": "@cart/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "generate:openapi": "tsx scripts/generate-openapi.ts"
+  },
+  "dependencies": {
+    "zod": "^4.4.3",
+    "@asteasolutions/zod-to-openapi": "^8.5.0"
+  },
+  "devDependencies": {
+    "@cart/eslint-config": "workspace:*",
+    "@cart/tsconfig": "workspace:*",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.8"
+  }
+}
