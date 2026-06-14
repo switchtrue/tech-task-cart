@@ -2,6 +2,7 @@ import { z } from "./zod-openapi.js";
 
 export const ApiErrorCode = z.enum([
   "VALIDATION_ERROR",
+  "UNAUTHORIZED",
   "PRODUCT_NOT_FOUND",
   "CART_ITEM_NOT_FOUND",
   "INTERNAL_ERROR",
