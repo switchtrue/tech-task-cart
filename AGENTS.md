@@ -42,6 +42,8 @@ Built as a take-home task; the design/plan artifacts are committed under
 - OpenAPI: `pnpm --filter @cart/contracts generate:openapi`
 
 ## Status
-Scaffold complete: green pipeline, both apps boot, route handlers return `501`
-stubs, Prisma schema has no models. Feature implementation (the four cart APIs
-and two pages) is the next phase — see `docs/superpowers/plans/`.
+Data model implemented: User/Product/Cart/CartItem schema, committed initial
+migration, idempotent seed (demo user `user-1` + 8 products), category DB↔wire
+boundary map, and DB-backed tests for the `@@unique(cartId, productId)`
+constraint. Route handlers still return `501` stubs — the four cart APIs are the
+next phase. See `docs/superpowers/plans/`.
