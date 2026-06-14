@@ -1,0 +1,31 @@
+{
+  "name": "@cart/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./lib/utils": "./src/lib/utils.ts",
+    "./styles/globals.css": "./src/styles/globals.css",
+    "./components/*": "./src/components/*.tsx"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.0",
+    "lucide-react": "^0.469.0",
+    "class-variance-authority": "^0.7.1"
+  },
+  "devDependencies": {
+    "@cart/eslint-config": "workspace:*",
+    "@cart/tsconfig": "workspace:*",
+    "@types/react": "^19.0.0",
+    "eslint": "^9.17.0",
+    "react": "^19.0.0",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": { "react": "^19.0.0" }
+}
