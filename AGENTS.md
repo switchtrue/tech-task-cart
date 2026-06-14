@@ -38,7 +38,10 @@ Built as a take-home task; the design/plan artifacts are committed under
 - Install: `pnpm install`
 - Dev (all): `pnpm dev`  ·  API only: `pnpm --filter @cart/api dev`  ·  web only: `pnpm --filter @cart/web dev`
 - Quality gate: `pnpm turbo lint typecheck test`
-- Prisma client: `pnpm --filter @cart/api db:generate`
+- Prisma: `db:generate` (client), `db:migrate` (author/apply a migration in dev),
+  `db:deploy` (apply migrations in prod/CI), `db:reset` (drop + re-migrate + seed),
+  `db:seed`, `db:push` (schema → DB, no migration; used by tests). All under
+  `pnpm --filter @cart/api`.
 - OpenAPI: `pnpm --filter @cart/contracts generate:openapi`
 
 ## Status
