@@ -14,3 +14,4 @@ apps/api/src/generated/
 apps/api/prisma/dev.db
 apps/api/.env
 next-env.d.ts
+*.tsbuildinfo
