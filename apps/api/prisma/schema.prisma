@@ -1,0 +1,11 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// Models are defined in the feature implementation phase:
+// User, Product, Cart, CartItem (CartItem unique on [cartId, productId]).
