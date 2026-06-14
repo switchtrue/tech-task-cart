@@ -1,0 +1,9 @@
+{
+  "extends": "@cart/tsconfig/node.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"]
+}
