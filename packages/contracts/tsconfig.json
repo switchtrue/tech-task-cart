@@ -1,4 +1,4 @@
 {
-  "extends": "@cart/tsconfig/base.json",
+  "extends": "@cart/tsconfig/node.json",
   "include": ["src", "scripts"]
 }
