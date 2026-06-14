@@ -1,7 +1,7 @@
 import { OpenAPIRegistry, OpenApiGeneratorV3 } from "@asteasolutions/zod-to-openapi";
 import type { OpenAPIObject } from "openapi3-ts/oas30";
-import { ProductSchema, CartSchema, AddCartItemSchema } from "./domain.js";
-import { ApiErrorSchema } from "./errors.js";
+import { ProductSchema, CartSchema, AddCartItemSchema } from "./domain";
+import { ApiErrorSchema } from "./errors";
 
 export function buildOpenApiDocument(): OpenAPIObject {
   const registry = new OpenAPIRegistry();

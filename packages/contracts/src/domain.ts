@@ -1,4 +1,4 @@
-import { z } from "./zod-openapi.js";
+import { z } from "./zod-openapi";
 
 export const Category = z.enum([
   "dry-food",

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { zValidator } from "@hono/zod-validator";
-import { routes, AddCartItemSchema, type ApiError } from "@cart/contracts";
+import { routes, USER_HEADER, AddCartItemSchema, type ApiError } from "@cart/contracts";
 import { ApiException, toErrorResponse } from "./lib/errors.js";
 import { currentUser, type CurrentUserEnv } from "./middleware/current-user.js";
 import {
@@ -11,6 +12,15 @@ import {
 } from "./services/cart-service.js";
 
 export const app = new Hono<CurrentUserEnv>();
+
+app.use(
+  "/api/*",
+  cors({
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    allowHeaders: ["content-type", USER_HEADER],
+    allowMethods: ["GET", "POST", "DELETE", "OPTIONS"],
+  }),
+);
 
 app.get(routes.products, async (c) => {
   return c.json(await listProductsWire());

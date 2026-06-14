@@ -1,15 +1,29 @@
 import {
   ProductListSchema,
   CartSchema,
+  ApiErrorSchema,
   routes,
   USER_HEADER,
   type ProductList,
   type Cart,
   type AddCartItem,
+  type ApiErrorCode,
 } from "@cart/contracts";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8787";
 const DEV_USER_ID = "user-1";
+
+export class ApiClientError extends Error {
+  constructor(
+    public readonly status: number,
+    public readonly code: ApiErrorCode,
+    message: string,
+    public readonly details?: unknown,
+  ) {
+    super(message);
+    this.name = "ApiClientError";
+  }
+}
 
 async function request<T>(
   path: string,
@@ -24,8 +38,19 @@ async function request<T>(
       ...init?.headers,
     },
   });
-  const json: unknown = await res.json();
-  if (!res.ok) throw new Error(`API ${res.status}`);
+  const json: unknown = await res.json().catch(() => null);
+  if (!res.ok) {
+    const parsed = ApiErrorSchema.safeParse(json);
+    if (parsed.success) {
+      throw new ApiClientError(
+        res.status,
+        parsed.data.error.code,
+        parsed.data.error.message,
+        parsed.data.error.details,
+      );
+    }
+    throw new ApiClientError(res.status, "INTERNAL_ERROR", `API request failed (${res.status})`);
+  }
   return schema.parse(json);
 }
 

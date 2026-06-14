@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { ProductSchema, routes, buildOpenApiDocument } from "./index.js";
+import { ProductSchema, routes } from "./index.js";
+import { buildOpenApiDocument } from "./openapi";
 
 describe("contracts", () => {
   it("validates a product", () => {

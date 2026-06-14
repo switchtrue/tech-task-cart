@@ -1,4 +1,4 @@
-import { z } from "./zod-openapi.js";
+import { z } from "./zod-openapi";
 
 export const ApiErrorCode = z.enum([
   "VALIDATION_ERROR",
